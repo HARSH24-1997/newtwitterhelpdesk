@@ -61,7 +61,7 @@ app.get('/*', (req, res) => {
 passport.use(new TwitterStrategy({
   consumerKey: process.env.consumerKey,
   consumerSecret: process.env.consumerSecret,
-  callbackURL: "https://twitterserverharsh.herokuapp.com/login/callback"
+  callbackURL: "https://twitterserverharshraj.herokuapp.com/login/callback"
 },
   function (token, tokenSecret, profile, cb) {
     const { id, screen_name, profile_image_url, name } = profile._json
