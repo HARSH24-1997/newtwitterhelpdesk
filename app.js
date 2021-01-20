@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors(
   {
-    origin: "https://helpdesktwitterharsh.netlify.app",
+    origin: "https://twitterserverharshraj.herokuapp.com",
     credentials: true
   }
 ))
@@ -49,7 +49,7 @@ app.use(
 );
 
 // app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// app.use('/users', usersRouter);
 
 app.use(express.static(path.join(__dirname, 'build')));
 
@@ -107,7 +107,7 @@ app.get("/login/callback", passport.authenticate('twitter'), async (req, res) =>
       console.log(data,"mention")
     }
   })
-  res.redirect(`/logincomplete?&${token}&${tokenSecret}&${screen_name}&${profile_image_url}&${name}`)
+  res.redirect(`https://twitterserverharshraj.herokuapp.com/logincomplete?&${token}&${tokenSecret}&${screen_name}&${profile_image_url}&${name}`)
 })
 
 app.get("/logout", (req, res) => {
