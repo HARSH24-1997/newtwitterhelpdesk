@@ -51,13 +51,6 @@ app.use(
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 
-app.use(express.static(path.join(__dirname, 'build')));
-
-
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
 passport.use(new TwitterStrategy({
   consumerKey: process.env.consumerKey,
   consumerSecret: process.env.consumerSecret,
@@ -139,6 +132,13 @@ app.post("/reply", async (req, res) => {
   const reply = await Temp.post("/statuses/update", { status, in_reply_to_status_id, auto_populate_reply_metadata: true })
   res.send("done")
 })
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 
 // catch 404 and forward to error handler
